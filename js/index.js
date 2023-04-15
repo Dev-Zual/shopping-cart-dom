@@ -1,25 +1,34 @@
-function sumQty(id) {
-  const mobileQtyField = document.getElementById(id);
-  const mobileQtyValue = parseInt(mobileQtyField.value);
-  mobileQtyField.value = mobileQtyValue + 1;
-}
-function minusQty(id) {
-  const mobileQtyField = document.getElementById(id);
-  const mobileQtyValue = parseInt(mobileQtyField.value);
-  mobileQtyField.value = mobileQtyValue - 1;
+function countQtyValue(id, isIncrease) {
+  const qtyField = document.getElementById(id);
+  const previousQtyValue = parseInt(qtyField.value);
+  let newIncreaseValue;
+  if (isIncrease) {
+    newIncreaseValue = previousQtyValue + 1;
+  } else {
+    newIncreaseValue = previousQtyValue - 1;
+  }
+  qtyField.value = newIncreaseValue;
+  return Number(qtyField.value);
 }
 
 document.getElementById("phn-qty-plus").addEventListener("click", function () {
-  sumQty("mobile-qty");
+  const qty = countQtyValue("mobile-qty", true);
+  const mobilePrice = document.getElementById("mobile-price");
+  const mobilePriceValue = parseInt(mobilePrice.innerText);
+  mobilePrice.innerText = mobilePriceValue * qty;
 });
 document.getElementById("phn-qty-minus").addEventListener("click", function () {
-  minusQty("mobile-qty");
+  const qty = countQtyValue("mobile-qty", false);
+  const mobilePrice = document.getElementById("mobile-price");
+  const mobilePriceValue = parseInt(mobilePrice.innerText);
+  const newPrice = mobilePriceValue * qty;
+  mobilePrice.innerText = newPrice;
 });
 document.getElementById("case-qty-plus").addEventListener("click", function () {
-  sumQty("casing-qty");
+  countQtyValue("casing-qty", true);
 });
 document
   .getElementById("case-qty-minus")
   .addEventListener("click", function () {
-    minusQty("casing-qty");
+    countQtyValue("casing-qty", false);
   });
