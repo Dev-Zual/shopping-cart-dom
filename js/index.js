@@ -11,25 +11,27 @@ function countQtyValue(id, isIncrease) {
   return newIncreaseValue;
 }
 
-function totalPrice(qty, id) {
+function totalPrice(qty, id, price) {
   const mobilePrice = document.getElementById(id);
-  const newMobilePrice = qty * 1219;
+  const newMobilePrice = qty * price;
   mobilePrice.innerText = newMobilePrice;
 }
 
 document.getElementById("phn-qty-plus").addEventListener("click", function () {
   const qty = countQtyValue("mobile-qty", true);
-  totalPrice(qty, "mobile-price");
+  totalPrice(qty, "mobile-price", 1219);
 });
 document.getElementById("phn-qty-minus").addEventListener("click", function () {
   const qty = countQtyValue("mobile-qty", false);
-  totalPrice(qty, "mobile-price");
+  totalPrice(qty, "mobile-price", 1219);
 });
 document.getElementById("case-qty-plus").addEventListener("click", function () {
-  countQtyValue("casing-qty", true);
+  const qty = countQtyValue("casing-qty", true);
+  totalPrice(qty, "casing-price", 59);
 });
 document
   .getElementById("case-qty-minus")
   .addEventListener("click", function () {
-    countQtyValue("casing-qty", false);
+    const qty = countQtyValue("casing-qty", false);
+    totalPrice(qty, "casing-price", 59);
   });
