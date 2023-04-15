@@ -8,21 +8,22 @@ function countQtyValue(id, isIncrease) {
     newIncreaseValue = previousQtyValue - 1;
   }
   qtyField.value = newIncreaseValue;
-  return Number(qtyField.value);
+  return newIncreaseValue;
+}
+
+function totalPrice(qty, id) {
+  const mobilePrice = document.getElementById(id);
+  const newMobilePrice = qty * 1219;
+  mobilePrice.innerText = newMobilePrice;
 }
 
 document.getElementById("phn-qty-plus").addEventListener("click", function () {
   const qty = countQtyValue("mobile-qty", true);
-  const mobilePrice = document.getElementById("mobile-price");
-  const mobilePriceValue = parseInt(mobilePrice.innerText);
-  mobilePrice.innerText = mobilePriceValue * qty;
+  totalPrice(qty, "mobile-price");
 });
 document.getElementById("phn-qty-minus").addEventListener("click", function () {
   const qty = countQtyValue("mobile-qty", false);
-  const mobilePrice = document.getElementById("mobile-price");
-  const mobilePriceValue = parseInt(mobilePrice.innerText);
-  const newPrice = mobilePriceValue * qty;
-  mobilePrice.innerText = newPrice;
+  totalPrice(qty, "mobile-price");
 });
 document.getElementById("case-qty-plus").addEventListener("click", function () {
   countQtyValue("casing-qty", true);
