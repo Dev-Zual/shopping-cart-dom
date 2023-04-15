@@ -1,12 +1,13 @@
-let count = 1;
 function minus(id) {
-  count--;
   const input = document.getElementById(id);
-
-  input.value = count;
+  if (input.value > 0) {
+    input.value = Number(input.value) - 1;
+  } else {
+    return alert("please add positive number");
+  }
 }
+
 function sum(id) {
-  count++;
   const input = document.getElementById(id);
-  input.value = count;
+  input.value = Number(input.value) + 1;
 }
