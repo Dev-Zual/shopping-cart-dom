@@ -32,10 +32,7 @@
 
                 <div class="col-md-5 center-item">
                   <div class="input-group number-spinner">
-                    <button
-                      onclick="minus('mobile-qty')"
-                      class="btn btn-default"
-                    >
+                    <button id="phn-qty-minus" class="btn btn-default">
                       <i class="fas fa-minus"></i>
                     </button>
                     <input
@@ -45,11 +42,11 @@
                       class="form-control text-center"
                       value="1"
                     />
-                    <button onclick="sum('mobile-qty')" class="btn btn-default">
+                    <button id="phn-qty-plus" class="btn btn-default">
                       <i class="fas fa-plus"></i>
                     </button>
                   </div>
-                  <h5>$1219</h5>
+                  <h5>$ <span id="mobile-price">1219</span></h5>
                   <img src="images/remove.png" alt="" class="remove-item" />
                 </div>
               </div>
@@ -63,10 +60,7 @@
                 </div>
                 <div class="col-md-5 center-item">
                   <div class="input-group number-spinner">
-                    <button
-                      onclick="minus('casing-qty')"
-                      class="btn btn-default"
-                    >
+                    <button id="case-qty-minus" class="btn btn-default">
                       <i class="fas fa-minus"></i>
                     </button>
                     <input
@@ -76,7 +70,7 @@
                       class="form-control text-center"
                       value="1"
                     />
-                    <button onclick="sum('casing-qty')" class="btn btn-default">
+                    <button id="case-qty-plus" class="btn btn-default">
                       <i class="fas fa-plus"></i>
                     </button>
                   </div>
