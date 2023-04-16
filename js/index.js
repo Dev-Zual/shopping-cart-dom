@@ -12,26 +12,44 @@ function countQtyValue(id, isIncrease) {
 }
 
 function totalPrice(qty, id, price) {
-  const mobilePrice = document.getElementById(id);
-  const newMobilePrice = qty * price;
-  mobilePrice.innerText = newMobilePrice;
+  const priceText = document.getElementById(id);
+  const totalPrice = qty * price;
+  priceText.innerText = totalPrice;
+  return totalPrice;
+}
+
+function getTextTotal(id) {
+  const itemsTotal = document.getElementById(id);
+  const itemsTotalValue = parseFloat(itemsTotal.innerText);
+  return itemsTotalValue;
+}
+
+function calculateSubTotal() {
+  const phoneTotal = getTextTotal("mobile-price");
+  const casingTotal = getTextTotal("casing-price");
+  const subTotalText = document.getElementById("sub-total");
+  subTotalText.innerText = phoneTotal + casingTotal;
 }
 
 document.getElementById("phn-qty-plus").addEventListener("click", function () {
   const qty = countQtyValue("mobile-qty", true);
   totalPrice(qty, "mobile-price", 1219);
+  calculateSubTotal();
 });
 document.getElementById("phn-qty-minus").addEventListener("click", function () {
   const qty = countQtyValue("mobile-qty", false);
   totalPrice(qty, "mobile-price", 1219);
+  calculateSubTotal();
 });
 document.getElementById("case-qty-plus").addEventListener("click", function () {
   const qty = countQtyValue("casing-qty", true);
   totalPrice(qty, "casing-price", 59);
+  calculateSubTotal();
 });
 document
   .getElementById("case-qty-minus")
   .addEventListener("click", function () {
     const qty = countQtyValue("casing-qty", false);
     totalPrice(qty, "casing-price", 59);
+    calculateSubTotal();
   });
