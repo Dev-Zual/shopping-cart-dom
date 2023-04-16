@@ -28,7 +28,15 @@ function calculateSubTotal() {
   const phoneTotal = getTextTotal("mobile-price");
   const casingTotal = getTextTotal("casing-price");
   const subTotalText = document.getElementById("sub-total");
-  subTotalText.innerText = phoneTotal + casingTotal;
+  const subTotalAmount = phoneTotal + casingTotal;
+  subTotalText.innerText = subTotalAmount;
+
+  const tax = subTotalAmount * 0.1;
+  const taxField = document.getElementById("tax");
+  taxField.innerText = tax.toFixed(2);
+  const finalTotal = subTotalAmount + parseFloat(tax.toFixed(2));
+  const finalField = document.getElementById("final-total");
+  finalField.innerText = finalTotal;
 }
 
 document.getElementById("phn-qty-plus").addEventListener("click", function () {
